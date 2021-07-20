@@ -4,9 +4,7 @@ import { Connector } from '../connector';
 export class GnosisSafeConnector extends Connector {
   id = 'gnosis';
   async connect() {
-    const sdk = new SafeAppsSDK({
-      whitelistedDomains: [new RegExp('.*')]
-    });
+    const sdk = new SafeAppsSDK();
     const safe = await sdk.safe.getInfo();
 
     const provider = new SafeAppProvider(safe, sdk);
